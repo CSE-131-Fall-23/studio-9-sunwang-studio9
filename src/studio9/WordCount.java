@@ -19,24 +19,28 @@ public class WordCount {
 	 * 
 	 * the resulting Map<String, Integer> would contain
 	 * 
-	 * key="to", value=2;
-	 * key="be", value=2;
-	 * key="or", value=1;
-	 * key="not", value=1;
+	 * key="to", value=2; key="be", value=2; key="or", value=1; key="not", value=1;
 	 * 
 	 * @param words
 	 * @return a map which contains all of the distinct words as keys, each
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
-
-		// FIXME
-		throw new NotYetImplementedException();
+		Map<String, Integer> map = new HashMap<>();
+		for (String word : words) {
+			Integer count = map.get(word);
+			if (map.get(word) == null) {
+				map.put(word, 1);
+			} else {
+				map.put(word, count + 1);
+			}
+		}
+		return map;
 
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		List<String> wordList = new LinkedList<>();
 		wordList.add("to");
 		wordList.add("be");
@@ -45,8 +49,8 @@ public class WordCount {
 		wordList.add("to");
 		wordList.add("be");
 		Map<String, Integer> words = countWords(wordList);
-		
-		//TODO: Write code that will iterate over the words map
-		//to verify its contents
+
+		// TODO: Write code that will iterate over the words map
+		// to verify its contents
 	}
 }
